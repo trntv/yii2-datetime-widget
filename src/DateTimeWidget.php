@@ -6,6 +6,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\widgets\InputWidget;
+use trntv\yii\datetime\assets\DateTimeAsset;
 
 /**
  * Class DateTimeWidget
