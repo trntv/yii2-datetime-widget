@@ -33,7 +33,7 @@ class DateTimeAsset extends AssetBundle
     public $depends = [
         'yii\web\JqueryAsset',
         'yii\bootstrap\BootstrapAsset',
-        'trntv\yii\datetime\MomentAsset'
+        'trntv\yii\datetime\assets\MomentAsset'
     ];
 
 }
