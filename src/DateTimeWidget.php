@@ -121,7 +121,6 @@ class DateTimeWidget extends InputWidget
                 $content[] = Html::tag('span', '', ['class' => 'glyphicon glyphicon-calendar']);
             }
             $content[] = Html::endTag('span');
-            $content[] = Html::endTag('div');
         }
 
         $content[] = Html::endTag('div');
