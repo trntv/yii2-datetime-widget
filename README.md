@@ -58,7 +58,7 @@ Once the extension is installed, simply use it in your code by  :
 
 ``containerOptions`` - widget container options
 
-``clientOptions`` - [full list of available options](http://eonasdan.github.io/bootstrap-datetimepicker/#options)
+``clientOptions`` - [full list of available options](http://eonasdan.github.io/bootstrap-datetimepicker/Options/)
 
 ## Examples
 ActiveField input widget:
