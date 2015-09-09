@@ -67,7 +67,7 @@ class DateTimeWidget extends InputWidget
         parent::init();
         $value = $this->hasModel() ? Html::getAttributeValue($this->model, $this->attribute) : $this->value;
         $this->momentDatetimeFormat = $this->momentDatetimeFormat ?: ArrayHelper::getValue(
-            $this->phpMomentMapping,
+            $this->getPhpMomentMappings(),
             $this->phpDatetimeFormat
         );
         if (!$this->momentDatetimeFormat) {
