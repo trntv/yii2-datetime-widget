@@ -1,6 +1,7 @@
 # Yii2 Date/Time Picker Widget
 Date/Time Picker widget for Yii2 framework
 Based on [Eonasdan's Bootstrap 3 Date/Time Picker](https://github.com/Eonasdan/bootstrap-datetimepicker)
+![DateTimePicker](http://i.imgur.com/nfnvh5g.png)
 
 Demo
 ----
@@ -77,7 +78,7 @@ ActiveField input widget:
 ]); ?>
 ```
 Standalone widget for date only:
-```
+```php
 <?php echo trntv\yii\datetime\DateTimeWidget::widget([
     'phpDatetimeFormat' => 'yyyy-MM-dd',
 ]) ; ?>
