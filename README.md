@@ -56,7 +56,7 @@ Once the extension is installed, simply use it in your code by  :
 
 ``phpMomentMapping`` - formats map (Default: ``true``)
 
-``containerOptions`` - widget container options
+``containerOptions`` - widget container optionsgit
 
 ``clientOptions`` - [full list of available options](http://eonasdan.github.io/bootstrap-datetimepicker/Options/)
 

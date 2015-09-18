@@ -25,6 +25,10 @@ class DateTimeWidget extends InputWidget
      */
     public $containerOptions = [];
     /**
+     * @var array
+     */
+    public $inputAddonOptions = [];
+    /**
      * @var string
      */
     public $phpDatetimeFormat = 'dd.MM.yyyy, HH:mm';
@@ -92,7 +96,10 @@ class DateTimeWidget extends InputWidget
         }
         DateTimeAsset::register($this->getView());
         $clientOptions = Json::encode($this->clientOptions);
-        $this->view->registerJs("$('#{$this->options['id']}').datetimepicker({$clientOptions})");
+        if (!isset($this->containerOptions['id'])) {
+            $this->containerOptions['id'] = $this->getId();
+        }
+        $this->view->registerJs("$('#{$this->containerOptions['id']}').datetimepicker({$clientOptions})");
     }
 
     /**
@@ -106,24 +113,49 @@ class DateTimeWidget extends InputWidget
         }
         Html::addCssStyle($this->containerOptions, 'position: relative');
         $content[] = Html::beginTag('div', $this->containerOptions);
-
-        if ($this->hasModel()) {
-            $content[] = Html::activeTextInput($this->model, $this->attribute, $this->options);
-        } else {
-            $content[] = Html::textInput($this->name, $this->value, $this->options);
-        }
+        $content[] = $this->renderInput();
 
         if ($this->showInputAddon) {
-            $content[] = Html::beginTag('span', ['class' => 'input-group-addon']);
-            if ($this->inputAddonContent) {
-                $content[] = $this->inputAddonContent;
-            } else {
-                $content[] = Html::tag('span', '', ['class' => 'glyphicon glyphicon-calendar']);
-            }
-            $content[] = Html::endTag('span');
+            $content[] = $this->renderInputAddon();
         }
 
         $content[] = Html::endTag('div');
+        return implode("\n", $content);
+    }
+
+    /**
+     * @return string
+     */
+    protected function renderInput()
+    {
+        if ($this->hasModel()) {
+            $content = Html::activeTextInput($this->model, $this->attribute, $this->options);
+        } else {
+            $content = Html::textInput($this->name, $this->value, $this->options);
+        }
+        return $content;
+    }
+
+    /**
+     * @return string
+     */
+    protected function renderInputAddon()
+    {
+        $content = [];
+        if (!array_key_exists('class', $this->inputAddonOptions)) {
+            Html::addCssClass($this->inputAddonOptions, 'input-group-addon');
+        }
+        if (!array_key_exists('style', $this->inputAddonOptions)) {
+            Html::addCssStyle($this->inputAddonOptions, ['cursor' => 'pointer']);
+        }
+        $content[] = Html::beginTag('span', $this->inputAddonOptions);
+        if ($this->inputAddonContent) {
+            $content[] = $this->inputAddonContent;
+        } else {
+            $content[] = Html::tag('span', '', ['class' => 'glyphicon glyphicon-calendar']);
+        }
+        $content[] = Html::endTag('span');
+
         return implode("\n", $content);
     }
 
