@@ -35,7 +35,7 @@ class DateTimeWidget extends InputWidget
     /**
      * @var
      */
-    public $momentDatetimeFormat = 'DD.MM.YYYY, HH:mm';
+    public $momentDatetimeFormat;
 
     /**
      * @var bool
