@@ -71,7 +71,7 @@ ActiveField input widget:
             'minDate' => new \yii\web\JsExpression('new Date("2015-01-01")'),
             'sideBySide' => true,
             'widgetPositioning' => [
-               'horizontal' => 'auto'
+               'horizontal' => 'auto',
                'vertical' => 'auto'
             ]
     ]
