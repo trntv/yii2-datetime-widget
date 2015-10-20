@@ -60,6 +60,16 @@ Once the extension is installed, simply use it in your code by  :
 
 ``clientOptions`` - [full list of available options](http://eonasdan.github.io/bootstrap-datetimepicker/Options/)
 
+*** Note:
+to enable widget show on textbox focus when used in a button group, use ``allowInputToggle`` option:
+```php
+...
+'clientOptions' => [
+    'allowInputToggle' => true
+]
+...
+```
+
 ## Examples
 ActiveField input widget:
 ```php
@@ -69,11 +79,13 @@ ActiveField input widget:
         'phpDatetimeFormat' => 'yyyy-MM-dd\'T\'HH:mm:ssZZZZZ',
         'clientOptions' => [
             'minDate' => new \yii\web\JsExpression('new Date("2015-01-01")'),
+            'allowInputToggle' => false,
             'sideBySide' => true,
             'widgetPositioning' => [
-               'horizontal' => 'auto',
+               'horizontal' => 'auto'
                'vertical' => 'auto'
             ]
+        ]
     ]
 ]); ?>
 ```
