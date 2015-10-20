@@ -82,7 +82,7 @@ ActiveField input widget:
             'allowInputToggle' => false,
             'sideBySide' => true,
             'widgetPositioning' => [
-               'horizontal' => 'auto'
+               'horizontal' => 'auto',
                'vertical' => 'auto'
             ]
         ]
