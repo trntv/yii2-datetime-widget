@@ -11,7 +11,7 @@ class DateTimeAsset extends AssetBundle
     /**
      * @var string
      */
-    public $sourcePath = '@bower/eonasdan-bootstrap-datetimepicker';
+    public $sourcePath = '@bower/bower-asset/eonasdan-bootstrap-datetimepicker';
 
     /**
      * @var array
