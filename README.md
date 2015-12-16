@@ -88,6 +88,7 @@ ActiveField input widget:
             'minDate' => new \yii\web\JsExpression('new Date("2015-01-01")'),
             'allowInputToggle' => false,
             'sideBySide' => true,
+            'locale' => 'zh-cn',
             'widgetPositioning' => [
                'horizontal' => 'auto',
                'vertical' => 'auto'
