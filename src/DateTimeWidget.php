@@ -1,6 +1,7 @@
 <?php
 namespace trntv\yii\datetime;
 
+use Yii;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -49,6 +50,12 @@ class DateTimeWidget extends InputWidget
      * @var array
      */
     public $phpMomentMapping = [];
+    /**
+     * @var string Moment.js locale
+     * Full list of available locales are here:
+     * @link https://github.com/moment/moment/tree/develop/locale
+     */
+    public $locale;
 
     /**
      * @var array
@@ -80,7 +87,7 @@ class DateTimeWidget extends InputWidget
         // Init default clientOptions
         $this->clientOptions = ArrayHelper::merge([
             'useCurrent' => true,
-            'locale' => substr(\Yii::$app->language, 0, 2),
+            'locale' => $this->locale ?: substr(Yii::$app->language, 0, 2),
             'format' => $this->momentDatetimeFormat,
         ], $this->clientOptions);
 
@@ -92,7 +99,7 @@ class DateTimeWidget extends InputWidget
         if ($value !== null) {
             $this->options['value'] = array_key_exists('value', $this->options)
                 ? $this->options['value']
-                : \Yii::$app->formatter->asDatetime($value, $this->phpDatetimeFormat);
+                : Yii::$app->formatter->asDatetime($value, $this->phpDatetimeFormat);
         }
         DateTimeAsset::register($this->getView());
         $clientOptions = Json::encode($this->clientOptions);
