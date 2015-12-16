@@ -13,6 +13,13 @@ Login: webmaster
 Password: webmaster
 ```
 
+Before you start
+----------------
+Make sure you have [fxp/composer-asset-plugin](https://github.com/francoispluchino/composer-asset-plugin) installed:
+```
+composer global require fxp/composer-asset-plugin
+```
+
 Installation
 ------------
 
