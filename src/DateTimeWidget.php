@@ -121,10 +121,9 @@ class DateTimeWidget extends InputWidget
         $this->getView()->registerJs("$('#{$this->containerOptions['id']}').datetimepicker({$clientOptions})");
 
         if (!empty($this->clientEvents)) {
-            $id = $this->getId();
             $js = [];
             foreach ($this->clientEvents as $event => $handler) {
-                $js[] = "jQuery('#$id').on('$event', $handler);";
+                $js[] = "jQuery('#{$this->containerOptions['id']}').on('$event', $handler);";
             }
             $this->getView()->registerJs(implode("\n", $js));
         }
