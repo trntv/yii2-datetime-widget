@@ -22,6 +22,10 @@ class DateTimeWidget extends InputWidget
      */
     public $clientOptions = [];
     /**
+     * @var array the event handlers for the underlying bootstrap-datetimepicker plugin.
+     */
+    public $clientEvents = [];
+    /**
      * @var array
      */
     public $containerOptions = [];
@@ -102,12 +106,27 @@ class DateTimeWidget extends InputWidget
                 ? $this->options['value']
                 : Yii::$app->formatter->asDatetime($value, $this->phpDatetimeFormat);
         }
-        DateTimeAsset::register($this->getView());
-        $clientOptions = Json::encode($this->clientOptions);
+
         if (!isset($this->containerOptions['id'])) {
             $this->containerOptions['id'] = $this->getId();
         }
-        $this->view->registerJs("$('#{$this->containerOptions['id']}').datetimepicker({$clientOptions})");
+
+        $this->registerJs();
+    }
+
+    protected function registerJs()
+    {
+        DateTimeAsset::register($this->getView());
+        $clientOptions = Json::encode($this->clientOptions);
+        $this->getView()->registerJs("$('#{$this->containerOptions['id']}').datetimepicker({$clientOptions})");
+
+        if (!empty($this->clientEvents)) {
+            $js = [];
+            foreach ($this->clientEvents as $event => $handler) {
+                $js[] = "jQuery('#{$this->containerOptions['id']}').on('$event', $handler);";
+            }
+            $this->getView()->registerJs(implode("\n", $js));
+        }
     }
 
     /**

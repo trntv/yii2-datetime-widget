@@ -103,3 +103,13 @@ Standalone widget for date only:
     'phpDatetimeFormat' => 'yyyy-MM-dd',
 ]) ; ?>
 ```
+Add custom JS events:
+```php
+<?php echo trntv\yii\datetime\DateTimeWidget::widget([
+    'clientEvents' => [
+        'dp.change' => 'function(e){
+            console.log('dp.change');
+        }',
+    ],
+]) ; ?>
+```
