@@ -101,7 +101,7 @@ class DateTimeWidget extends InputWidget
             'class' => 'form-control',
         ], $this->options);
 
-        if ($value !== null) {
+        if ($value !== null && trim($value) !== '') {
             $this->options['value'] = array_key_exists('value', $this->options)
                 ? $this->options['value']
                 : Yii::$app->formatter->asDatetime($value, $this->phpDatetimeFormat);
