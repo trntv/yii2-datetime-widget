@@ -11,21 +11,19 @@
     }
   ],
   "require": {
-    "yiisoft/yii2": "~2.0",
-    "bower-asset/eonasdan-bootstrap-datetimepicker": "~4.0"
+    "yiisoft/yii2": "^2.0",
+    "bower-asset/eonasdan-bootstrap-datetimepicker": "^4.17",
+    "bower-asset/moment": "^2.21"
   },
   "autoload": {
     "psr-4": {
         "trntv\\yii\\datetime\\": "src/"
     }
   },
-  "config": {
-    "process-timeout": 1800
-  },
-  "extra": {
-    "asset-installer-paths": {
-      "npm-asset-library": "vendor/npm",
-      "bower-asset-library": "vendor/bower"
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
     }
-  }
+  ]
 }
