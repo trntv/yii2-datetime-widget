@@ -41,11 +41,14 @@ class DateTimeWidget extends InputWidget
      * @var
      */
     public $momentDatetimeFormat;
-
     /**
      * @var bool
      */
     public $showInputAddon = true;
+    /**
+     * @var bool show the input addon in the beginning of the input, not the end
+     */
+    public $showInputAddonStart = false;
     /**
      * @var string
      */
@@ -140,9 +143,14 @@ class DateTimeWidget extends InputWidget
         }
         Html::addCssStyle($this->containerOptions, 'position: relative');
         $content[] = Html::beginTag('div', $this->containerOptions);
+
+        if ($this->showInputAddon && $this->showInputAddonStart) {
+            $content[] = $this->renderInputAddon();
+        }
+
         $content[] = $this->renderInput();
 
-        if ($this->showInputAddon) {
+        if ($this->showInputAddon && !$this->showInputAddonStart) {
             $content[] = $this->renderInputAddon();
         }
 
